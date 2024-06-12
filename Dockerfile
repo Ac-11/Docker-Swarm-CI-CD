@@ -7,11 +7,14 @@ WORKDIR /app
 # Copy the current directory contents into the container
 COPY . /app
 
-# Install Flask
+# Install Flask directly
 RUN pip install flask
+
+# Install curl for health checks
+RUN apt-get update && apt-get install -y curl
 
 # Expose port 5000
 EXPOSE 5000
 
-# Run the application
+# Run the application directly with Python
 CMD ["python", "app.py"]
